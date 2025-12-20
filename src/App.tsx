@@ -3,35 +3,31 @@ import { ActiveTab } from "./types";
 import Navbar from "./components/Navbar";
 import AboutMe from "./components/AboutMe";
 import ProjectGallery from "./components/ProjectGallery";
+import { FaItchIo, FaLinkedin, FaGithub } from "react-icons/fa";
 
 const App: React.FC = () => {
 	const [activeTab, setActiveTab] = useState<ActiveTab>("home");
 
 	return (
-		<div className="min-h-screen flex flex-col bg-white selection:bg-purple-100 selection:text-purple-900">
+		<div className="min-h-screen flex flex-col bg-body selection:bg-primaryFaded selection:text-primary">
 			<Navbar activeTab={activeTab} setActiveTab={setActiveTab} />
 
-			<main className="flex-1 max-w-6xl mx-auto px-4 w-full">
+			<main className="flex-1 max-w-6xl mx-auto px-6 w-full">
 				{activeTab === "home" ? <AboutMe /> : <ProjectGallery />}
 			</main>
 
-			<footer className="bg-slate-50 py-20 mt-32 border-t border-slate-100">
-				<div className="max-w-6xl mx-auto px-4 flex flex-col items-center gap-10">
-					<div className="flex gap-12 text-sm font-bold text-slate-400">
-						<a
-							href="https://github.com/State0fFlux"
-							className="hover:text-purple-600 transition-colors">
-							GitHub
+			<footer className="bottom-0 z-50 bg-black/25 backdrop-blur border-y-4 border-black py-6">
+				<div className="max-w-6xl mx-auto px-6 flex flex-col items-center gap-4">
+					<h2 className="text-xl uppercase">Brady Manske</h2>
+					<div className="flex gap-20">
+						<a className="text-interactable" href="https://www.linkedin.com/in/brady-manske/">
+							<FaLinkedin size={22} />
 						</a>
-						<a
-							href="https://www.linkedin.com/in/brady-manske/"
-							className="hover:text-purple-600 transition-colors">
-							LinkedIn
+						<a className="text-interactable" href="https://github.com/State0fFlux">
+							<FaGithub size={22} />
 						</a>
-						<a
-							href="https://state0fflux.itch.io/"
-							className="hover:text-purple-600 transition-colors">
-							Itch.io
+						<a className="text-interactable" href="https://bradymanske.itch.io">
+							<FaItchIo size={22} />
 						</a>
 					</div>
 				</div>
