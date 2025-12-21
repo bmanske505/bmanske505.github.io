@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { PROJECTS } from "../constants";
 import { Project, ProjectCategory } from "../types";
 import ProjectCard from "./ProjectCard";
@@ -8,25 +8,16 @@ const ProjectGallery: React.FC = () => {
 	const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 	const [filter, setFilter] = useState<ProjectCategory | "All">("All");
 
-	useEffect(() => {
-		if (selectedProject) {
-			document.body.classList.add("overflow-hidden");
-		} else {
-			document.body.classList.remove("overflow-hidden");
-		}
-
-		return () => {
-			document.body.classList.remove("overflow-hidden");
-		};
-	}, [selectedProject]);
-
 	const filteredProjects =
 		filter === "All" ? PROJECTS : PROJECTS.filter((p) => p.category === filter);
 
-	const categories: (ProjectCategory | "All")[] = ["All", "Video Game", "Software", "Web"];
+	const categories: (ProjectCategory | "All")[] = [
+		"All",
+		...Array.from(new Set(PROJECTS.map((p) => p.category))),
+	];
 
 	return (
-		<div className="space-y-16 py-16 fade-in">
+		<div className="space-y-8 py-16 fade-in">
 			<div className="flex flex-col items-center text-center space-y-8">
 				<div className="space-y-2">
 					<h2 className="text-4xl font-bold text-slate-900">My Projects</h2>
@@ -35,18 +26,20 @@ const ProjectGallery: React.FC = () => {
 					</p>
 				</div>
 
-				<div className="flex flex-wrap items-center gap-x-0 lg:gap-x-16 px-2 py-1 backdrop-blur bg-black/25 border-4 border-black rounded-full">
-					{categories.map((cat) => (
-						<button
-							key={cat}
-							onClick={() => setFilter(cat)}
-							className={`px-6 py-2 text-xs lg:text-sm text-interactable ${
-								filter === cat ? "active" : ""
-							}`}>
-							{cat.toUpperCase()}
-						</button>
-					))}
-				</div>
+				{categories.length > 2 && (
+					<div className="flex flex-wrap items-center gap-x-0 lg:gap-x-16 px-2 py-1 backdrop-blur bg-black/25 border-4 border-black rounded-full">
+						{categories.map((cat) => (
+							<button
+								key={cat}
+								onClick={() => setFilter(cat)}
+								className={`px-6 py-2 text-xs lg:text-sm text-interactable ${
+									filter === cat ? "active" : ""
+								}`}>
+								{cat.toUpperCase()}
+							</button>
+						))}
+					</div>
+				)}
 			</div>
 
 			{filteredProjects.length > 0 ? (

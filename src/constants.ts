@@ -32,7 +32,7 @@ export const PROJECTS: Project[] = [
       Writeup
     `,
 		githubUrl: "https://github.com/State0fFlux/Kindling",
-		demoUrl: "https://itch.io/embed-upload/14193767?color=382f27",
+		demoUrl: "https://itch.io/embed-upload/15906793?color=382f27",
 		images: [],
 		tags: ["Unity", "C#"],
 		// award: "Community Favorite"
@@ -49,7 +49,7 @@ export const PROJECTS: Project[] = [
       Writeup
     `,
 		githubUrl: "https://github.com/State0fFlux/Bug-Hunt",
-		demoUrl: "https://itch.io/embed-upload/14011411?color=5b6b2c",
+		demoUrl: "https://itch.io/embed-upload/15906853?color=5b6b2c",
 		images: [],
 		tags: ["Unity", "C#"],
 		// award: "1st Place"

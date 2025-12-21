@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { createPortal } from "react-dom";
 import { Project } from "../types";
 import { Github, Gamepad2, ExternalLink } from "lucide-react";
 import GameEmbed from "./GameEmbed";
@@ -10,14 +11,18 @@ interface ProjectDetailProps {
 
 const ProjectDetail: React.FC<ProjectDetailProps> = ({ project, onClose }) => {
 	useEffect(() => {
+		document.body.classList.add("overflow-hidden");
+
 		const handleKeyDown = (e: KeyboardEvent) => {
-			if (e.key === "Escape") {
-				onClose();
-			}
+			if (e.key === "Escape") onClose();
 		};
 
 		window.addEventListener("keydown", handleKeyDown);
-		return () => window.removeEventListener("keydown", handleKeyDown);
+
+		return () => {
+			document.body.classList.remove("overflow-hidden");
+			window.removeEventListener("keydown", handleKeyDown);
+		};
 	}, [onClose]);
 
 	const renderContent = (text: string) => {
@@ -49,113 +54,73 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ project, onClose }) => {
 		});
 	};
 
-	return (
-		<div className="fixed inset-0 z-20 flex items-center justify-center p-4 lg:p-12">
-			<div className="absolute inset-0 cursor-pointer" onClick={onClose} />
-
-			<div className="relative w-full max-w-6xl h-full rounded-3xl flex flex-col shadow-2xl zoom-in border-4 border-black overflow-hidden bg-white">
-				{/* Header */}
-				<div
-					className="flex items-center justify-between p-8 bg-black sticky top-0 box-interactable border-0 border-b-4 rounded-t-2xl"
-					onClick={onClose}>
-					<div className="space-y-1">
-						<span className="text-[10px] font-bold uppercase tracking-[0.2em]">
-							{project.category}
-						</span>
-						<h2 className="text-3xl font-bold text-white">{project.title}</h2>
-					</div>
+	const modalContent = (
+		<div className="fixed z-20 inset-0 m-auto w-full max-w-6xl my-16 rounded-3xl flex flex-col shadow-2xl zoom-in border-4 border-black overflow-hidden bg-white">
+			{/* Header */}
+			<div
+				className="flex items-center justify-between p-8 bg-black sticky top-0 box-interactable border-0 border-b-4 rounded-t-2xl"
+				onClick={onClose}>
+				<div className="space-y-1">
+					<span className="text-[10px] font-bold uppercase tracking-[0.2em]">
+						{project.category}
+					</span>
+					<h2 className="text-3xl font-bold text-white">{project.title}</h2>
 				</div>
+			</div>
 
-				{/* Content Scroll Area */}
-				<div className="flex-1 overflow-y-auto custom-scrollbar p-8 lg:p-16">
-					<div className="max-w-4xl mx-auto space-y-20">
-						{/* Main Visuals */}
-						<div className="game-wrapper">
+			{/* Content Scroll Area */}
+			<div className="px-4 lg:px-16 overflow-y-auto">
+				<div className="max-w-4xl mx-auto space-y-20">
+					{/* Main Visuals */}
+					<div className="game-wrapper"></div>
+					<div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+						<div className="lg:col-span-2">
 							<GameEmbed title={project.title} src={project.demoUrl} />
 						</div>
-						<div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-							<div className="lg:col-span-2">
-								<img
-									src={project.images[0]}
-									alt="Main highlight"
-									className="w-full rounded-3xl shadow-2xl object-cover aspect-[16/10]"
-								/>
-							</div>
 
-							<div className="space-y-8">
-								<div className="space-y-4">
-									<h4 className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">
-										Connect & Launch
-									</h4>
-									<div className="flex flex-col gap-8">
-										{project.githubUrl && (
-											<a
-												href={project.githubUrl}
-												className="flex items-center justify-between p-1 box-interactable">
-												<span className="flex items-center gap-3 font-bold">
-													<Github size={20} /> View Codebase
-												</span>
-												<ExternalLink size={20} />
-											</a>
-										)}
-									</div>
-								</div>
-
-								<div className="space-y-4">
-									<h4 className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">
-										Technologies
-									</h4>
-									<div className="flex flex-wrap gap-2">
-										{project.tags.map((tag) => (
-											<span
-												key={tag}
-												className="px-4 py-1.5 bg-slate-50 rounded-full text-xs font-bold text-slate-700 border border-slate-100">
-												{tag}
+						<div className="space-y-8">
+							<div className="space-y-4">
+								<h4 className="text-[10px] font-bold secondary uppercase tracking-[0.2em]">
+									Connect & Launch
+								</h4>
+								<div className="flex flex-col gap-8">
+									{project.githubUrl && (
+										<a
+											href={project.githubUrl}
+											target="_blank"
+											className="flex items-center justify-between p-1 box-interactable">
+											<span className="flex items-center gap-3 font-bold">
+												<Github size={20} /> View Codebase
 											</span>
-										))}
-									</div>
+											<ExternalLink size={20} />
+										</a>
+									)}
+								</div>
+							</div>
+
+							<div className="space-y-4">
+								<h4 className="text-[10px] font-bold secondary uppercase tracking-[0.2em]">
+									Technologies
+								</h4>
+								<div className="flex flex-wrap gap-2">
+									{project.tags.map((tag) => (
+										<span
+											key={tag}
+											className="px-4 py-1.5 bg-slate-50 rounded-full text-xs font-bold text-slate-700 border border-slate-100">
+											{tag}
+										</span>
+									))}
 								</div>
 							</div>
 						</div>
-
-						{/* Writeup Content */}
-						<div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
-							<div className="lg:col-span-4 lg:sticky lg:top-0 h-fit">
-								<div className="p-8 bg-slate-50 rounded-3xl border border-slate-100">
-									<p className="text-slate-900 font-bold italic text-xl leading-relaxed">
-										"{project.shortDescription}"
-									</p>
-								</div>
-							</div>
-							<div className="lg:col-span-8">
-								<article className="prose prose-slate max-w-none">
-									{renderContent(project.longWriteup)}
-								</article>
-							</div>
-						</div>
-
-						{/* Gallery Expansion */}
-						{project.images.length > 1 && (
-							<div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-20 border-t border-slate-100">
-								{project.images.slice(1).map((img, idx) => (
-									<div key={idx} className="space-y-4">
-										<img
-											src={img}
-											alt={`Detail ${idx}`}
-											className="w-full rounded-3xl shadow-lg border border-slate-100"
-										/>
-										<p className="text-center text-[10px] font-bold text-slate-400 uppercase tracking-widest">
-											Process Insight #{idx + 1}
-										</p>
-									</div>
-								))}
-							</div>
-						)}
 					</div>
 				</div>
 			</div>
 		</div>
 	);
+
+	// This renders the modal at the top of the DOM, ignoring parent structure
+	return createPortal(modalContent, document.body);
 };
 
 export default ProjectDetail;

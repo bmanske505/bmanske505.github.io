@@ -20,13 +20,16 @@ const App: React.FC = () => {
 				<div className="flex flex-col items-center gap-4">
 					<h2 className="text-xl uppercase">Brady Manske</h2>
 					<div className="flex gap-8">
-						<a className="text-interactable" href="https://www.linkedin.com/in/brady-manske/">
+						<a
+							className="text-interactable"
+							href="https://www.linkedin.com/in/brady-manske/"
+							target="_blank">
 							<FaLinkedin size={22} />
 						</a>
-						<a className="text-interactable" href="https://github.com/State0fFlux">
+						<a className="text-interactable" href="https://github.com/State0fFlux" target="_blank">
 							<FaGithub size={22} />
 						</a>
-						<a className="text-interactable" href="https://bradymanske.itch.io">
+						<a className="text-interactable" href="https://state0fflux.itch.io" target="_blank">
 							<FaItchIo size={22} />
 						</a>
 					</div>

@@ -12,7 +12,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onClick }) => {
 		<div
 			onClick={() => onClick(project)}
 			className="group bg-black/75 backdrop-blur border-4 border-black rounded-3xl overflow-hidden box-interactable">
-			<div className="aspect-[4/3] overflow-hidden relative grayscale-[0.5] hover:grayscale-0 transition-all duration-700">
+			<div className="aspect-[4/3] overflow-hidden relative grayscale hover:grayscale-0 transition-all duration-700">
 				<img
 					src={project.thumbnail}
 					alt={project.title}
