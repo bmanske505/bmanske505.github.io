@@ -4,14 +4,6 @@
 @tailwind components;
 @tailwind utilities;
 
-h2 {
-	@apply text-2xl font-bold my-6 text-slate-900;
-}
-
-h3 {
-	@apply text-xl my-6 text-slate-500;
-}
-
 :root {
 	--primary: rgb(118, 80, 255);
 	--secondary: rgb(110, 110, 110);
@@ -20,6 +12,26 @@ h3 {
 body {
 	font-family: "Inter", sans-serif;
 	scroll-behavior: smooth;
+}
+
+h1 {
+	@apply text-5xl font-extrabold text-slate-900;
+}
+
+h2 {
+	@apply text-3xl font-bold text-slate-900;
+}
+
+h3 {
+	@apply text-xl my-6 text-slate-500;
+}
+
+h4 {
+	@apply text-[10px] font-bold primary uppercase tracking-[0.2em];
+}
+
+p {
+	@apply text-slate-600 leading-relaxed text-xl font-light;
 }
 
 .custom-scrollbar::-webkit-scrollbar {
@@ -68,34 +80,28 @@ body {
 
 .text-interactable,
 .box-interactable {
-	transition: all 1s cubic-bezier(0.16, 1, 0.3, 1); /* smooth tween for scale + color */
-	cursor: pointer;
+	@apply cursor-pointer transition-all duration-700 ease-out;
 }
 
 /* toggle / active underline */
 .text-interactable.active {
 	color: var(--primary);
-	text-decoration: underline var(--primary);
+	text-decoration: underline var(--primary) 4px;
 	text-underline-offset: 8px;
 }
 
 .text-interactable:hover:not(.active) {
 	transform: scale(1.5);
-	text-shadow: 0px 5px 5px black;
+	text-shadow: 0px 10px 10px black;
 }
 
 .box-interactable {
-	border: 4px solid var(--primary);
-	background-color: black;
-	color: var(--primary);
+	@apply primary bg-black border;
 }
 
 .box-interactable:hover {
-	border-color: black;
-	background-color: var(--primary);
-	color: black;
-	transform: translateY(-10px);
-	box-shadow: 0px 15px 20px black;
+	@apply text-black bg-primary translate-y-[-15px];
+	filter: drop-shadow(0px 10px 10px black);
 }
 
 .primary {
@@ -132,4 +138,8 @@ body {
 .game-container iframe {
 	width: 100%;
 	height: 100%;
+}
+
+.border {
+	@apply border-4 rounded-3xl border-current;
 }

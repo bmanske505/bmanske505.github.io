@@ -20,7 +20,7 @@ const ProjectGallery: React.FC = () => {
 		<div className="space-y-8 py-16 fade-in">
 			<div className="flex flex-col items-center text-center space-y-8">
 				<div className="space-y-2">
-					<h2 className="text-4xl font-bold text-slate-900">My Projects</h2>
+					<h1 className="text-3xl">My Projects</h1>
 					<p className="text-slate-500">
 						A deep dive into some of my favorite technical challenges and creative explorations.
 					</p>

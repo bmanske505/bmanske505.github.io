@@ -1,11 +1,13 @@
 export type ProjectCategory = "Video Game" | "Web" | "Software";
 
 export interface Project {
-	title: string;
+  title: string;
+  start?: string;
+  end: string;
 	category: ProjectCategory;
 	thumbnail: string;
 	tagline: string;
-	writeup: string;
+	writeup?: string;
 	githubUrl?: string;
 	demoUrl?: string;
 	images: string[];

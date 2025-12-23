@@ -10,35 +10,25 @@ interface ProjectCardProps {
 
 const ProjectCard: React.FC<ProjectCardProps> = ({ project, onClick }) => {
 	return (
-		<div
-			onClick={() => onClick(project)}
-			className="group bg-black/75 backdrop-blur border-4 border-black rounded-3xl overflow-hidden box-interactable">
-			<div className="aspect-[4/3] overflow-hidden relative grayscale hover:grayscale-0 transition-all duration-700">
-				<img
-					src={project.thumbnail}
-					alt={project.title}
-					className="w-full h-full border-b-4 border-black object-cover"
-				/>
-			</div>
+		<div onClick={() => onClick(project)} className="group overflow-hidden box-interactable">
+			<img
+				src={project.thumbnail}
+				alt={project.title}
+				className="aspect-[4/3] grayscale group-hover:grayscale-0 transition-all duration-700 w-full object-cover"
+			/>
 
-			<div className="p-8 space-y-4">
-				<div className="flex justify-between">
-					<Heading project={project} />
-					<div className="flex gap-3">
-						{project.githubUrl && <LuGithub size={18} />}
-						{project.category == "Video Game" && <LuGamepad2 size={18} />}
-					</div>
-				</div>
+			<div className="py-4 px-8 space-y-4 border-t-4 border-current">
+				<Heading project={project} />
 
-				<p className="text-white text-xs leading-relaxed line-clamp-2 font-medium">
+				<p className="text-white text-sm leading-relaxed line-clamp-2 font-medium">
 					{project.tagline}
 				</p>
 
 				<div className="flex flex-wrap gap-2 pt-2">
-					{project.tags.slice(0, 3).map((tag) => (
+					{project.tags.map((tag) => (
 						<span
 							key={tag}
-							className="px-3 py-1 bg-slate-50 text-[10px] font-bold rounded-full text-slate-600 border border-slate-100">
+							className="px-3 py-1 bg-slate-100 text-xs font-bold rounded-full text-slate-600 border-2 border-slate-800">
 							{tag}
 						</span>
 					))}

@@ -3,7 +3,7 @@ import { ActiveTab } from "./types";
 import Navbar from "./components/Navbar";
 import AboutMe from "./components/AboutMe";
 import ProjectGallery from "./components/ProjectGallery";
-import { FaItchIo, FaLinkedin, FaGithub } from "react-icons/fa";
+import { Socials } from "./components/FormattedBlocks";
 
 const App: React.FC = () => {
 	const [activeTab, setActiveTab] = useState<ActiveTab>("home");
@@ -16,23 +16,10 @@ const App: React.FC = () => {
 				{activeTab === "home" ? <AboutMe /> : <ProjectGallery />}
 			</main>
 
-			<footer className="bg-black/25 backdrop-blur border-y-4 border-black py-6">
+			<footer className="bg-black/75 backdrop-blur border-y-4 border-black py-6">
 				<div className="flex flex-col items-center gap-4">
-					<h2 className="text-xl uppercase">© 2025 Brady Manske</h2>
-					<div className="flex gap-16">
-						<a
-							className="text-interactable"
-							href="https://www.linkedin.com/in/brady-manske/"
-							target="_blank">
-							<FaLinkedin size={22} />
-						</a>
-						<a className="text-interactable" href="https://github.com/State0fFlux" target="_blank">
-							<FaGithub size={22} />
-						</a>
-						<a className="text-interactable" href="https://state0fflux.itch.io" target="_blank">
-							<FaItchIo size={22} />
-						</a>
-					</div>
+					<p className="text-white uppercase">© 2025 Brady Manske</p>
+					<Socials className="gap-16 text-white" />
 				</div>
 			</footer>
 		</div>

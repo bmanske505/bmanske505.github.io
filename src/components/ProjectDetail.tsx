@@ -27,19 +27,18 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ project, onClose }) => {
 	}, [onClose]);
 
 	const modalContent = (
-		<div className="fixed z-20 inset-0 m-auto w-full max-w-6xl my-16 rounded-3xl flex flex-col shadow-2xl zoom-in border-4 border-black overflow-hidden bg-white">
+		<div className="border fixed z-20 inset-0 w-full m-auto flex flex-col zoom-in overflow-hidden bg-white">
 			{/* Header */}
 			<div
-				className="flex items-center justify-between p-8 bg-black sticky top-0 box-interactable border-0 border-b-4 rounded-t-2xl"
+				className="py-4 px-8 sticky top-0 box-interactable !rounded-none !border-x-0 !border-t-0"
 				onClick={onClose}>
 				<Heading project={project} />
 			</div>
 
 			{/* Content Scroll Area */}
 			<div className="px-4 lg:px-16 overflow-y-auto">
-				<div className="max-w-4xl mx-auto space-y-16">
+				<div className="mx-auto my-8 space-y-16">
 					{/* Main Visuals */}
-					<div className="game-wrapper"></div>
 					<div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
 						<div className="lg:col-span-2">
 							<GameEmbed title={project.title} src={project.demoUrl} />
@@ -47,16 +46,14 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ project, onClose }) => {
 
 						<div className="space-y-8">
 							<div className="space-y-4">
-								<h4 className="text-[10px] font-bold secondary uppercase tracking-[0.2em]">
-									Connect & Launch
-								</h4>
+								<h4 className="secondary">Connect & Launch</h4>
 								<div className="flex flex-col gap-8">
 									{project.githubUrl && (
 										<a
 											href={project.githubUrl}
 											target="_blank"
 											className="w-fit p-2 box-interactable">
-											<span className="flex items-center gap-3 font-bold">
+											<span className="flex justify-center items-center gap-3 font-bold">
 												<Github size={20} /> View Codebase <ExternalLink size={20} />
 											</span>
 										</a>
@@ -65,14 +62,12 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ project, onClose }) => {
 							</div>
 
 							<div className="space-y-4">
-								<h4 className="text-[10px] font-bold secondary uppercase tracking-[0.2em]">
-									Technologies
-								</h4>
+								<h4 className="secondary">Technologies</h4>
 								<div className="flex flex-wrap gap-2">
 									{project.tags.map((tag) => (
 										<span
 											key={tag}
-											className="px-4 py-1.5 bg-slate-50 rounded-full text-xs font-bold text-slate-700 border border-slate-100">
+											className="px-4 py-1.5 bg-slate-600 rounded-full text-xs font-bold text-slate-100 border-2 border-slate-800">
 											{tag}
 										</span>
 									))}
@@ -81,7 +76,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ project, onClose }) => {
 						</div>
 					</div>
 				</div>
-				<Writeup project={project} />
+				{project.writeup && <Writeup project={project} />}
 			</div>
 		</div>
 	);
