@@ -17,9 +17,9 @@ const App: React.FC = () => {
 			</main>
 
 			<footer className="bg-black/75 backdrop-blur border-y-4 border-black py-6">
-				<div className="flex flex-col items-center gap-4">
+				<div className="grid grid-col justify-center gap-4">
 					<p className="text-white uppercase">© 2025 Brady Manske</p>
-					<Socials className="gap-16 text-white" />
+					<Socials className=" text-white" />
 				</div>
 			</footer>
 		</div>

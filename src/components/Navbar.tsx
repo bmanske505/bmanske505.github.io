@@ -8,7 +8,7 @@ interface NavbarProps {
 
 const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab }) => {
 	return (
-		<nav className="sticky top-0 z-10 bg-black/75 backdrop-blur border-y-4 border-black py-6 items-center flex justify-center gap-x-48">
+		<nav className="sticky top-0 z-10 bg-black/75 backdrop-blur border-y-4 border-black py-6 items-center flex justify-center gap-20">
 			<button
 				onClick={() => setActiveTab("home")}
 				className={`text-interactable text-white uppercase ${

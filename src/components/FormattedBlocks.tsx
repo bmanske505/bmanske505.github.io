@@ -40,7 +40,7 @@ export const Heading: React.FC<ProjectProps> = ({ project }) => {
 
 export const Socials: React.FC<DivProps> = ({ className }) => {
 	return (
-		<div className={`flex items-center ${className ?? ""}`}>
+		<div className={`flex justify-around ${className ?? ""}`}>
 			<a
 				href="https://www.linkedin.com/in/brady-manske/"
 				target="_blank"
@@ -51,7 +51,7 @@ export const Socials: React.FC<DivProps> = ({ className }) => {
 				<FaGithub size={25} title="GitHub Profile" />
 			</a>
 			<a href="https://state0fflux.itch.io" target="_blank" className="text-interactable">
-				<FaItchIo size={25} title="Itch Profile" />
+				<FaItchIo size={25} title="Itch.io Profile" />
 			</a>
 		</div>
 	);

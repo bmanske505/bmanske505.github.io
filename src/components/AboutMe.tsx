@@ -6,12 +6,12 @@ const AboutMe: React.FC = () => {
 	return (
 		<div className="flex flex-col gap-y-16 py-16 fade-in">
 			{/* Profile Section */}
-			<section className="grid grid-cols-1 lg:grid-cols-3 gap-16 items-center">
+			<section className="grid grid-cols-1 lg:grid-cols-3 gap-y-16 gap-x-32 items-center justify-center">
 				<div className="relative mx-auto">
 					<img
 						src="./brady-headshot.JPG"
 						alt="Brady Manske Portrait"
-						className="size-72 lg:size-96 object-cover border transition-size duration-700"
+						className="size-72 lg:size-96 aspect-square object-cover border transition-size duration-700"
 					/>
 					<div className="absolute -bottom-6 -right-6 p-6 border bg-black/75 backdrop-blur">
 						<h4>Based In</h4>
@@ -34,7 +34,7 @@ const AboutMe: React.FC = () => {
 						refine experiences until they feel right.
 					</p>
 
-					<div className="flex flex-wrap items-center gap-x-20">
+					<div className="flex flex-wrap gap-8 items-center justify-center md:justify-start">
 						<a
 							href="mailto:bmanske505@gmail.com"
 							target="_blank"
@@ -42,7 +42,7 @@ const AboutMe: React.FC = () => {
 							<FaEnvelope size={22} title="Email" />
 							Get in Touch
 						</a>
-						<Socials className="secondary gap-12" />
+						<Socials className="secondary gap-8" />
 					</div>
 				</div>
 			</section>
@@ -51,10 +51,12 @@ const AboutMe: React.FC = () => {
 			<section className="flex flex-col gap-4">
 				<h2>My Resume</h2>
 				<p>A summary of my professional journey and skills.</p>
-				<a href="./BradyManske.pdf" target="_blank" className="box-interactable text-icon">
-					<FaFilePdf size={22} title="Resume" />
-					View Resume
-				</a>
+				<div className="flex justify-center md:justify-start">
+					<a href="./BradyManske.pdf" target="_blank" className="box-interactable text-icon">
+						<FaFilePdf size={22} title="Resume" />
+						View Resume
+					</a>
+				</div>
 			</section>
 			<section className="flex flex-col gap-4">
 				<h2>Endorsements</h2>
