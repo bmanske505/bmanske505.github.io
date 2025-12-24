@@ -1,6 +1,5 @@
 import React from "react";
-import { FileText } from "lucide-react";
-import { IoMdMail } from "react-icons/io";
+import { FaEnvelope, FaFilePdf, FaUserLarge } from "react-icons/fa6";
 import { Socials } from "./FormattedBlocks";
 
 const AboutMe: React.FC = () => {
@@ -23,12 +22,12 @@ const AboutMe: React.FC = () => {
 				<div className="space-y-8 lg:col-span-2">
 					<div className="space-y-2">
 						<h1>Brady Manske</h1>
-						<h4 className="text-sm">Software Engineer | Gameplay Programming</h4>
+						<h4>Software Engineer | Gameplay Programming</h4>
 					</div>
 
 					<p>
 						A versatile programmer with experience across web and game development, I am focused on
-						building systems that feel intentional, responsive, and user-centered. I'm comfortable
+						building systems that feel intentional, responsive, and user-centered. I’m comfortable
 						wearing multiple hats, moving between gameplay, tools, and interface work, and I enjoy
 						collaborating closely with designers and artists to bridge technical structure with
 						creative goals. I value rapid learning and iteration, using playtesting and feedback to
@@ -39,8 +38,8 @@ const AboutMe: React.FC = () => {
 						<a
 							href="mailto:bmanske505@gmail.com"
 							target="_blank"
-							className="flex items-center gap-2 p-2 w-fit box-interactable">
-							<IoMdMail size={22} />
+							className="box-interactable text-icon">
+							<FaEnvelope size={22} title="Email" />
 							Get in Touch
 						</a>
 						<Socials className="secondary gap-12" />
@@ -52,13 +51,34 @@ const AboutMe: React.FC = () => {
 			<section className="flex flex-col gap-4">
 				<h2>My Resume</h2>
 				<p>A summary of my professional journey and skills.</p>
-				<a
-					href="./BradyManske.pdf"
-					target="_blank"
-					className="flex items-center gap-2 p-2 w-fit box-interactable">
-					<FileText size={22} />
-					View PDF
+				<a href="./BradyManske.pdf" target="_blank" className="box-interactable text-icon">
+					<FaFilePdf size={22} title="Resume" />
+					View Resume
 				</a>
+			</section>
+			<section className="flex flex-col gap-4">
+				<h2>Endorsements</h2>
+				<p>
+					“Brady is quick to find solutions and improve the accessibility of the UW Recreation
+					website. He takes direction extremely well and consistently goes a step further on his own
+					to make meaningful improvements. Additionally, he is one of the most responsive student
+					employees I have had the privilege of working with.”
+				</p>
+				<div className="ml-16 text-icon !gap-8">
+					<a
+						href="https://www.linkedin.com/in/cassidy-sanders-curry/"
+						target="_blank"
+						className="text-interactable">
+						<FaUserLarge size={40} title="Cassidy's LinkedIn Profile" />
+					</a>
+					<div>
+						<p className="font-bold">Cassidy Sanders-Curry</p>
+						<p className="text-sm">
+							Assistant Director of Outreach, UW Recreation <br />
+							(Supervisor)
+						</p>
+					</div>
+				</div>
 			</section>
 		</div>
 	);

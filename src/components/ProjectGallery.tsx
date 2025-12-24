@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { PROJECTS } from "../constants";
 import { Project, ProjectCategory } from "../types";
 import ProjectCard from "./ProjectCard";
-import ProjectDetail from "./ProjectDetail";
+import ProjectModal from "./ProjectModal";
 
 const ProjectGallery: React.FC = () => {
 	const [selectedProject, setSelectedProject] = useState<Project | null>(null);
@@ -21,7 +21,7 @@ const ProjectGallery: React.FC = () => {
 			<div className="flex flex-col items-center text-center space-y-8">
 				<div className="space-y-2">
 					<h1 className="text-3xl">My Projects</h1>
-					<p className="text-slate-500">
+					<p>
 						A deep dive into some of my favorite technical challenges and creative explorations.
 					</p>
 				</div>
@@ -55,7 +55,7 @@ const ProjectGallery: React.FC = () => {
 			)}
 
 			{selectedProject && (
-				<ProjectDetail project={selectedProject} onClose={() => setSelectedProject(null)} />
+				<ProjectModal project={selectedProject} onClose={() => setSelectedProject(null)} />
 			)}
 		</div>
 	);

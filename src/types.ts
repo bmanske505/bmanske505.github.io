@@ -2,6 +2,8 @@ export type ProjectCategory = "Video Game" | "Web" | "Software";
 
 export interface Project {
   title: string;
+  event: string;
+  theme?: string;
   start?: string;
   end: string;
 	category: ProjectCategory;
@@ -13,7 +15,6 @@ export interface Project {
 	images: string[];
 	tags: string[];
 	award?: string;
-	techStack?: Record<string, string[]>;
 }
 
 export type ActiveTab = "home" | "projects";
