@@ -1,6 +1,5 @@
 import React from "react";
 import { Project } from "../types";
-import { LuGamepad2, LuGithub, LuTrophy } from "react-icons/lu";
 import { Heading, Tags } from "./FormattedBlocks";
 
 interface ProjectCardProps {

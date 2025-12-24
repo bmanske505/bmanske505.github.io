@@ -6,12 +6,12 @@ const AboutMe: React.FC = () => {
 	return (
 		<div className="flex flex-col gap-y-16 py-16 fade-in">
 			{/* Profile Section */}
-			<section className="grid grid-cols-1 lg:grid-cols-3 gap-y-16 gap-x-32 items-center justify-center">
-				<div className="relative mx-auto">
+			<section className="grid grid-cols-1 lg:grid-cols-5 gap-y-16 gap-x-32 items-center justify-center">
+				<div className="relative mx-auto lg:col-span-2">
 					<img
 						src="./brady-headshot.JPG"
 						alt="Brady Manske Portrait"
-						className="size-72 lg:size-96 aspect-square object-cover border transition-size duration-700"
+						className="size-96 aspect-square object-cover border transition-size duration-700"
 					/>
 					<div className="absolute -bottom-6 -right-6 p-6 border bg-black/75 backdrop-blur">
 						<h4>Based In</h4>
@@ -19,7 +19,7 @@ const AboutMe: React.FC = () => {
 					</div>
 				</div>
 
-				<div className="space-y-8 lg:col-span-2">
+				<div className="space-y-8 lg:col-span-3">
 					<div className="space-y-2">
 						<h1>Brady Manske</h1>
 						<h4>Software Engineer | Gameplay Programming</h4>
