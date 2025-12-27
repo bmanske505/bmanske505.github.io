@@ -28,7 +28,7 @@ export const PROJECTS: Project[] = [
 			{
 				heading: "My Role",
 				text: `
-        As the lead programmer on a junior team, I played a critical role in supporting the team and building the project's technical structure:
+        As the lead programmer of a junior team, I played a critical role in supporting the team and building the project's technical structure:
         - Designed and implemented game progression systems, unlockable content, and dynamic menus to support a narrative-driven experience
         - Structured modular, maintainable C# scripts to manage overlapping game logic, player abilities, and companion interactions
         - Mentored new team members in programming, art, and level design, providing technical guidance and collaborative support
@@ -65,7 +65,7 @@ export const PROJECTS: Project[] = [
 			{
 				heading: "My Role",
 				text: `
-        As a solo developer, I was in charge of creative literally everything you see in the final product! Here are some of my technical highlights:
+        As a solo developer, I was in charge of creating literally everything you see in the final product! Here are some of my technical highlights:
         - Built core gameplay systems including player controllers, combat logic, enemy waves, and event-driven game progression
         - Designed flexible, data-driven architectures using ScriptableObjects to allow rapid content iteration without code changes
         - Iterated on playtester feedback to rebalance difficulty and improve player controls, prioritizing smooth gameplay

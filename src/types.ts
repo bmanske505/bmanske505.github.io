@@ -17,7 +17,7 @@ export interface Project {
 	end: string;
 	category: ProjectCategory;
 	thumbnail: string;
-	tagline: string;
+	tagline?: string;
 	writeup?: Section[];
 	githubUrl?: string;
 	demoUrl?: string;

@@ -19,9 +19,10 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onClick }) => {
 			<div className="py-4 px-8 space-y-4 border-t-4 border-current">
 				<Heading project={project} />
 
-				<p className="text-white text-sm leading-relaxed h-[45.5px] line-clamp-2">
-					{project.tagline}
-				</p>
+				{project.tagline && (
+					<p className="text-white text-sm leading-relaxed line-clamp-2">{project.tagline}</p>
+				)}
+
 				<Tags project={project} />
 			</div>
 		</div>

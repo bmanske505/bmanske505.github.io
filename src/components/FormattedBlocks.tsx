@@ -95,14 +95,14 @@ export const Writeup: React.FC<ProjectProps> = ({ project }) => {
 	if (!project.writeup) return null;
 
 	return (
-		<div className="grid grid-cols-1 lg:grid-cols-2 gap-10 my-8">
+		<div className="columns-1 lg:columns-2 mt-8">
 			{project.writeup.map((section) => {
 				if (!section.text) return;
 				const blocks = parseTextToBlocks(section.text);
 				const Icon = IconMap.get(section.heading);
 
 				return (
-					<div className="flex flex-col gap-4">
+					<div className="break-inside-avoid p-5 flex flex-col gap-4">
 						<h4 className="text-2xl capitalize tracking-normal text-icon">
 							{Icon && <Icon size={22} title={section.heading} />}
 							{section.heading}
