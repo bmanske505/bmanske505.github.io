@@ -48,7 +48,7 @@ export const Socials: React.FC<DivProps> = ({ className }) => {
 				className="text-interactable">
 				<FaLinkedin size={25} title="LinkedIn Profile" />
 			</a>
-			<a href="https://github.com/State0fFlux" target="_blank" className="text-interactable">
+			<a href="https://github.com/bmanske" target="_blank" className="text-interactable">
 				<FaGithub size={25} title="GitHub Profile" />
 			</a>
 			<a href="https://state0fflux.itch.io" target="_blank" className="text-interactable">
