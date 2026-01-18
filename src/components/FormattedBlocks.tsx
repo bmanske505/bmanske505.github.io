@@ -1,5 +1,5 @@
 import { Project } from "../types";
-import { DefaultIcon, HeadingIcons } from "../constants";
+import { CategoryIcons, DefaultIcon, HeadingIcons } from "../constants";
 import {
 	PiGameControllerDuotone,
 	PiGithubLogoDuotone,
@@ -30,16 +30,14 @@ export const Tags: React.FC<ProjectProps> = ({ project }) => {
 };
 
 export const Heading: React.FC<ProjectProps> = ({ project }) => {
+	const Icon = CategoryIcons[project.category] ?? DefaultIcon;
 	return (
 		<div className="space-y-1">
-			<div className="spaced-out">{project.category}</div>
+			<span className="spaced-out text-icon">
+				<Icon size={22} />
+				{project.category}
+			</span>
 			<h3 className="text-2xl font-bold primary">{project.title}</h3>
-			{project.award && (
-				<span className="text-icon">
-					<PiMedalDuotone size={22} title="Award Earned" />
-					{project.award}
-				</span>
-			)}
 		</div>
 	);
 };
@@ -51,13 +49,13 @@ export const Socials: React.FC<DivProps> = ({ className }) => {
 				href="https://www.linkedin.com/in/brady-manske/"
 				target="_blank"
 				className="text-interactable">
-				<PiLinkedinLogoDuotone size={25} title="LinkedIn Profile" />
+				<PiLinkedinLogoDuotone size={30} title="LinkedIn Profile" />
 			</a>
 			<a href="https://github.com/bmanske505" target="_blank" className="text-interactable">
-				<PiGithubLogoDuotone size={25} title="GitHub Profile" />
+				<PiGithubLogoDuotone size={30} title="GitHub Profile" />
 			</a>
 			<a href="https://state0fflux.itch.io" target="_blank" className="text-interactable">
-				<PiGameControllerDuotone size={25} title="Itch.io Profile" />
+				<PiGameControllerDuotone size={30} title="Itch.io Profile" />
 			</a>
 		</div>
 	);

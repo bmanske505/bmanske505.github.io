@@ -12,6 +12,7 @@ import {
 	PiSquareDuotone,
 	PiSquaresFourDuotone,
 } from "react-icons/pi";
+import { AndroidLogo } from "phosphor-react";
 
 export const HeadingIcons: Record<Heading, IconType> = {
 	Overview: PiBookOpenDuotone,
@@ -24,12 +25,49 @@ export const CategoryIcons: Record<ProjectCategory | "All", IconType> = {
 	All: PiSquaresFourDuotone,
 	"Video Game": PiGameControllerDuotone,
 	Software: PiGearFineDuotone,
-	Web: PiGlobeDuotone,
+	"Web App": PiGlobeDuotone,
 };
 
 export const DefaultIcon: IconType = PiSquareDuotone;
 
 export const PROJECTS: Project[] = [
+	{
+		title: "WNS Visualization",
+		event: "UW Data Visualization Final",
+		end: "December 2025",
+		category: "Web App",
+		thumbnail: "./wns-webpage.png",
+		//thumbnail: "https://invasive-species-6ebd34.pages.cs.washington.edu/images/wns.jpg",
+		tagline:
+			"Bats play a crucial role in our environment, but recently a species of fungus has been decimating their numbers.",
+		webUrl: "https://invasive-species-6ebd34.pages.cs.washington.edu/",
+		codeUrl: "https://gitlab.cs.washington.edu/cse442/25au/fp/invasive-species",
+		writeup: [
+			{
+				heading: "Overview",
+				text: `This project is an interactive data visualization highlighting the impact of white-nose syndrome, a fungal disease that has devastated bat populations across the United States. The goal was to raise awareness by making population decline trends explorable and understandable to a general audience.`,
+			},
+			{
+				heading: "My Role",
+				text: `I took on multiple responsibilities to support both the data and front-end aspects of the project, including:
+        - Sourcing bat population and fungal spread data from ScienceBase and related public datasets
+        - Cleaning, normalizing, and aggregating raw data using Python and Pandas
+        - Translating design mockups into a responsive visualization layout using HTML, CSS, and Bootstrap
+        - Implementing interactive visualizations and UI controls in D3.js`,
+			},
+			{
+				heading: "My Challenges",
+				text: `Reliable and consistent population data was difficult to obtain due to a government shutdown that limited access to monitored data requests. Additionally, population estimates varied significantly depending on measurement methodology. To address this, I began with a small, well-defined sample dataset and established a consistent schema with key fields used across all visualizations. This allowed the rest of the team to proceed with D3 development while I worked backwards to integrate real-world data.
+        
+        Additionally, as the dataset grew, we observed noticeable performance issues during slider interactions due to repeated full re-renders of large numbers of SVG elements. To improve responsiveness, I refactored the D3 update logic to operate on incremental batches of datapoints rather than re-rendering the entire dataset on each interaction. This significantly reduced unnecessary DOM updates and resulted in smoother, more responsive user interactions.`,
+			},
+			{
+				heading: "What I Learned",
+				text: `This project strengthened my understanding of responsive layout systems like Bootstrap and highlighted both its strengths and limitations. I also gained practical experience optimizing D3 visualizations for performance, reinforcing the importance of efficient update patterns and thoughtful data handling in interactive visual systems.`,
+			},
+		],
+		tags: ["D3.js", "Bootstrap", "HTML", "Pandas"],
+	},
 	{
 		title: "Crust’s Bakery",
 		event: "UW Game Dev Club Jam",
@@ -38,7 +76,7 @@ export const PROJECTS: Project[] = [
 		category: "Video Game",
 		thumbnail: "https://img.itch.zone/aW1nLzIzNzI1MjUwLnBuZw==/315x250%23c/fJX9Ap.png",
 		tagline: "It’s not just about the bread you make; it’s about who you share it with!",
-		githubUrl: "https://github.com/bmanske505/crusts-bakery",
+		codeUrl: "https://github.com/bmanske505/crusts-bakery",
 		demoUrl: "https://itch.io/embed-upload/15322444?color=000000",
 		writeup: [
 			{
@@ -75,7 +113,7 @@ export const PROJECTS: Project[] = [
 		category: "Video Game",
 		thumbnail: "https://img.itch.zone/aW1nLzIxOTU2NTg2LnBuZw==/315x250%23c/kTiFuJ.png",
 		tagline: "Defend warmth against a world gone cold.",
-		githubUrl: "https://github.com/bmanske505/Kindling",
+		codeUrl: "https://github.com/bmanske505/Kindling",
 		demoUrl: "https://itch.io/embed-upload/15906793?color=000000",
 		writeup: [
 			{
@@ -112,7 +150,7 @@ export const PROJECTS: Project[] = [
 		category: "Video Game",
 		thumbnail: "https://img.itch.zone/aW1nLzIxNjI4ODU5LnBuZw==/315x250%23c/Nocoo%2F.png",
 		tagline: "Collect bugs to earn your Bug-Catching Badge and impress your scout leader!",
-		githubUrl: "https://github.com/bmanske505/Bug-Hunt",
+		codeUrl: "https://github.com/bmanske505/Bug-Hunt",
 		demoUrl: "https://itch.io/embed-upload/15906853?color=000000",
 		writeup: [
 			{

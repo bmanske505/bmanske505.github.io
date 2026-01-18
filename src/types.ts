@@ -1,4 +1,4 @@
-export type ProjectCategory = "Video Game" | "Web" | "Software";
+export type ProjectCategory = "Video Game" | "Web App" | "Software";
 
 export type Heading = "Overview" | "My Role" | "My Challenges" | "What I Learned";
 
@@ -17,7 +17,8 @@ export interface Project {
 	thumbnail: string;
 	tagline?: string;
 	writeup?: Section[];
-	githubUrl?: string;
+	webUrl?: string;
+	codeUrl?: string;
 	demoUrl?: string;
 	tags: string[];
 	award?: string;

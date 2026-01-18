@@ -1,13 +1,16 @@
 import React, { useEffect } from "react";
 import { createPortal } from "react-dom";
 import { Project } from "../types";
-import GameEmbed from "./GameEmbed";
 import { Heading, Tags, Writeup } from "./FormattedBlocks";
+import { DefaultIcon } from "../constants";
 import {
 	PiBriefcaseDuotone,
 	PiCalendarDotsDuotone,
 	PiGithubLogoDuotone,
+	PiGitlabLogoDuotone,
+	PiTrophyDuotone,
 	PiPaintBrushDuotone,
+	PiArrowSquareOutDuotone,
 } from "react-icons/pi";
 
 interface ProjectModalProps {
@@ -48,7 +51,27 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => {
 					<div className="flex-1 overflow-y-auto p-8 custom-scrollbar">
 						<div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
 							<div className="lg:col-span-3">
-								<GameEmbed title={project.title} src={project.demoUrl} />
+								<div className="aspect-video overflow-hidden border">
+									{project.demoUrl ? (
+										<iframe
+											className="size-full"
+											src={project.demoUrl}
+											allowFullScreen
+											loading="lazy"
+											title={project.title}
+										/>
+									) : (
+										project.webUrl && (
+											<a href={project.webUrl} target="_blank">
+												<img
+													className="size-full m-auto object-cover"
+													src={project.thumbnail}
+													title={project.title}
+												/>
+											</a>
+										)
+									)}
+								</div>
 							</div>
 
 							<div className="space-y-8 lg:col-span-2">
@@ -63,27 +86,49 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => {
 										{project.start && `${project.start} - `}
 										{project.end}
 									</p>
+									{project.award && (
+										<p className="text-icon">
+											<PiTrophyDuotone size={22} title="Award Earned" />
+											{project.award}
+										</p>
+									)}
 									{project.theme && (
 										<p className="text-icon">
 											<PiPaintBrushDuotone size={22} title="Theme" />“{project.theme}”
 										</p>
 									)}
 								</div>
-
-								<div className="space-y-4">
-									<h4 className="secondary">Connect & Launch</h4>
-									{project.githubUrl && (
-										<a href={project.githubUrl} target="_blank" className="box-depress text-icon">
-											<span>View Codebase</span>
-											<PiGithubLogoDuotone size={22} title="GitHub Repository" />
-										</a>
-									)}
-								</div>
-
-								<div className="space-y-4">
-									<h4 className="secondary">Skills & Tools</h4>
-									<Tags project={project} />
-								</div>
+								{(project.codeUrl || project.webUrl) && (
+									<div className="space-y-4">
+										<h4 className="secondary">Connect & Launch</h4>
+										<div className="flex flex-wrap gap-4">
+											{project.webUrl && (
+												<a href={project.webUrl} target="_blank" className="box-depress text-icon">
+													<span>Visit Webpage</span>
+													<PiArrowSquareOutDuotone size={22} title="Webpage" />
+												</a>
+											)}
+											{project.codeUrl && (
+												<a href={project.codeUrl} target="_blank" className="box-depress text-icon">
+													<span>View Codebase</span>
+													{project.codeUrl.includes("github") ? (
+														<PiGithubLogoDuotone size={22} title="GitHub Repository" />
+													) : project.codeUrl.includes("gitlab") ? (
+														<PiGitlabLogoDuotone size={22} title="GitLab Repository" />
+													) : (
+														<DefaultIcon size={22} title="Codebase" />
+													)}
+												</a>
+											)}
+										</div>
+									</div>
+								)}
+								{project.tags.length > 0 && (
+									<div className="space-y-4">
+										<h4 className="secondary">Skills & Tools</h4>
+										<Tags project={project} />
+									</div>
+								)}
 							</div>
 						</div>
 						<Writeup project={project} />
