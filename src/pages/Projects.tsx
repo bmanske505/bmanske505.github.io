@@ -7,14 +7,14 @@ import ProjectModal from "../components/ProjectModal";
 import { useSearchParams } from "react-router-dom";
 
 const Projects: React.FC = () => {
-	const [filter, setFilter] = useState<ProjectCategory | "All">("All");
-
 	const [searchParams, setSearchParams] = useSearchParams();
 	const selectedTitle = searchParams.get("title");
+	const selectedCategory = (searchParams.get("category") as ProjectCategory | "All") ?? "All";
+
 	const selectedProject: Project = PROJECTS.find((p) => p.title === selectedTitle) ?? null;
 
 	const filteredProjects =
-		filter === "All" ? PROJECTS : PROJECTS.filter((p) => p.category === filter);
+		selectedCategory === "All" ? PROJECTS : PROJECTS.filter((p) => p.category === selectedCategory);
 
 	const categories: (ProjectCategory | "All")[] = [
 		"All",
@@ -39,8 +39,14 @@ const Projects: React.FC = () => {
 							return (
 								<button
 									key={cat}
-									onClick={() => setFilter(cat)}
-									className={`text-xs lg:text-sm box-depress radio ${filter === cat ? "active" : ""}`}>
+									onClick={() => {
+										setSearchParams((prev) => {
+											const params = new URLSearchParams(prev);
+											params.set("category", cat);
+											return params;
+										});
+									}}
+									className={`text-xs lg:text-sm box-depress radio ${selectedCategory === cat ? "active" : ""}`}>
 									<span className="text-icon">
 										<Icon size={22} title="Award Earned" />
 										{cat.toUpperCase()}
@@ -61,7 +67,13 @@ const Projects: React.FC = () => {
 							<ProjectCard
 								key={project.title}
 								project={project}
-								onClick={() => setSearchParams({ title: project.title })}
+								onClick={() => {
+									setSearchParams((prev) => {
+										const params = new URLSearchParams(prev);
+										params.set("title", project.title);
+										return params;
+									});
+								}}
 							/>
 						),
 					)}
@@ -73,7 +85,16 @@ const Projects: React.FC = () => {
 			)}
 
 			{selectedProject && (
-				<ProjectModal project={selectedProject} onClose={() => setSearchParams({})} />
+				<ProjectModal
+					project={selectedProject}
+					onClose={() =>
+						setSearchParams((prev) => {
+							const params = new URLSearchParams(prev);
+							params.delete("title");
+							return params;
+						})
+					}
+				/>
 			)}
 		</div>
 	);
