@@ -4,7 +4,6 @@ import {
 	PiGameControllerDuotone,
 	PiGithubLogoDuotone,
 	PiLinkedinLogoDuotone,
-	PiMedalDuotone,
 } from "react-icons/pi";
 
 interface ProjectProps {
@@ -34,7 +33,7 @@ export const Heading: React.FC<ProjectProps> = ({ project }) => {
 	return (
 		<div className="space-y-1">
 			<span className="spaced-out text-icon">
-				<Icon size={22} />
+				<Icon size={22} title={project.category} />
 				{project.category}
 			</span>
 			<h3 className="text-2xl font-bold primary">{project.title}</h3>

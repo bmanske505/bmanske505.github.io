@@ -9,12 +9,13 @@ import { useSearchParams } from "react-router-dom";
 const Projects: React.FC = () => {
 	const [searchParams, setSearchParams] = useSearchParams();
 	const selectedTitle = searchParams.get("title");
-	const selectedCategory = (searchParams.get("category") as ProjectCategory | "All") ?? "All";
+	const selectedCategory = searchParams.get("category") as ProjectCategory;
 
-	const selectedProject: Project = PROJECTS.find((p) => p.title === selectedTitle) ?? null;
+	const selectedProject: Project = PROJECTS.find((p) => p.title === selectedTitle);
 
-	const filteredProjects =
-		selectedCategory === "All" ? PROJECTS : PROJECTS.filter((p) => p.category === selectedCategory);
+	const filteredProjects = selectedCategory
+		? PROJECTS.filter((p) => p.category === selectedCategory)
+		: PROJECTS;
 
 	const categories: (ProjectCategory | "All")[] = [
 		"All",
@@ -42,7 +43,11 @@ const Projects: React.FC = () => {
 									onClick={() => {
 										setSearchParams((prev) => {
 											const params = new URLSearchParams(prev);
-											params.set("category", cat);
+											if (cat === "All") {
+												params.delete("category");
+											} else {
+												params.set("category", cat);
+											}
 											return params;
 										});
 									}}

@@ -14,7 +14,7 @@ const About: React.FC = () => {
 						className="size-96 aspect-square object-cover border border-secondary transition-size duration-700"
 					/>
 					<div className="absolute -bottom-6 -right-6 p-6 border milky">
-						<h4>Based In</h4>
+						<h4 className="accent-secondary">Based In</h4>
 						<p className="text-lg primary font-bold">Seattle, WA</p>
 					</div>
 				</div>
