@@ -51,7 +51,7 @@ const Projects: React.FC = () => {
 											return params;
 										});
 									}}
-									className={`text-xs lg:text-sm box-depress radio ${selectedCategory === cat ? "active" : ""}`}>
+									className={`text-xs lg:text-sm box-depress radio ${(cat === "All" && selectedCategory === null) || selectedCategory === cat ? "active" : ""}`}>
 									<span className="text-icon">
 										<Icon size={22} title="Award Earned" />
 										{cat.toUpperCase()}
