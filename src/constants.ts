@@ -32,12 +32,23 @@ export const DefaultIcon: IconType = PiSquareDuotone;
 
 export const PROJECTS: Project[] = [
 	{
+		title: "Escape the Forest",
+		event: "UW CSE 481: Games Capstone",
+		start: "January 2026",
+		end: "Present",
+		category: "Video Game",
+		thumbnail: "https://img.itch.zone/aW1nLzI1OTA4NzY5LnBuZw==/315x250%23c/jiVIXx.png",
+		tagline: "Guide your sibling through the woods and survive the night.",
+		codeUrl: "https://github.com/bmanske505/Escape-The-Forest",
+		demoUrl: "https://itch.io/embed-upload/16537285?color=000000",
+		tags: ["Unity", "CI/CD", "Agile", "Prototyping"],
+	},
+	{
 		title: "WNS Visualization",
-		event: "UW Data Visualization Final",
+		event: "UW CSE 457: Data Visualization Final",
 		end: "December 2025",
 		category: "Web App",
 		thumbnail: "./wns-webpage.png",
-		//thumbnail: "https://invasive-species-6ebd34.pages.cs.washington.edu/images/wns.jpg",
 		tagline:
 			"Bats play a crucial role in our environment, but recently a species of fungus has been decimating their numbers.",
 		webUrl: "https://invasive-species-6ebd34.pages.cs.washington.edu/",
@@ -144,7 +155,7 @@ export const PROJECTS: Project[] = [
 	},
 	{
 		title: "Bug Hunt",
-		event: "UW Computer Graphics Final",
+		event: "UW CSE 457: Computer Graphics Final",
 		start: "May 2025",
 		end: "June 2025",
 		category: "Video Game",
