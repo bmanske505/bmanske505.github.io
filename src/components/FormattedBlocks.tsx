@@ -1,23 +1,68 @@
 import { Project } from "../types";
 import { CategoryIcons, DefaultIcon, HeadingIcons } from "../constants";
+import { useState, useEffect, useRef } from "react";
 import {
 	PiGameControllerDuotone,
 	PiGithubLogoDuotone,
 	PiLinkedinLogoDuotone,
 } from "react-icons/pi";
 
-interface ProjectProps {
-	project: Project;
-}
+const SLIDE_DURATION = 5000;
 
-interface DivProps {
-	className?: string;
-}
+export const PhotoCarousel: React.FC<{ project: Project; className?: string }> = ({
+	project,
+	className,
+}) => {
+	const [index, setIndex] = useState(0);
 
-export const Tags: React.FC<ProjectProps> = ({ project }) => {
+	if (!project.photos || project.photos.length === 0) return null;
+
+	const photos = project.photos;
+	const current = photos[index];
+
+	const goTo = (i: number) => setIndex(i);
+
+	useEffect(() => {
+		if (photos.length <= 1) return;
+		const timer = setTimeout(() => {
+			setIndex((prev) => (prev + 1) % photos.length);
+		}, SLIDE_DURATION);
+		return () => clearTimeout(timer);
+	}, [index, photos.length]);
+
+	return (
+		<div className={`${className ?? ""} space-y-4`}>
+			<h4 className="secondary">Photos</h4>
+			<div className="flex flex-col items-center gap-3">
+				<div className="relative w-full overflow-hidden border">
+					<img src={current.src} alt={current.caption} className="w-full h-auto object-contain" />
+				</div>
+
+				<p className="text-sm secondary text-center">{current.caption}</p>
+
+				{photos.length > 1 && (
+					<div className="flex gap-2">
+						{photos.map((_, i) => (
+							<button
+								key={i}
+								onClick={() => goTo(i)}
+								className={`size-2 rounded-full transition-colors ${
+									i === index ? "bg-current" : "opacity-30 bg-current"
+								}`}
+								aria-label={`Go to photo ${i + 1}`}
+							/>
+						))}
+					</div>
+				)}
+			</div>
+		</div>
+	);
+};
+
+export const Tags: React.FC<{ project: Project }> = ({ project }) => {
 	return (
 		<div className="flex flex-wrap gap-2">
-			{project.tags.map((tag) => (
+			{project.tags.sort().map((tag) => (
 				<span
 					key={tag}
 					className="px-3 py-1 bg-slate-100 text-xs font-bold rounded-full text-slate-600 border-2 border-slate-800">
@@ -28,7 +73,7 @@ export const Tags: React.FC<ProjectProps> = ({ project }) => {
 	);
 };
 
-export const Heading: React.FC<ProjectProps> = ({ project }) => {
+export const Heading: React.FC<{ project: Project }> = ({ project }) => {
 	const Icon = CategoryIcons[project.category] ?? DefaultIcon;
 	return (
 		<div className="space-y-1">
@@ -41,7 +86,7 @@ export const Heading: React.FC<ProjectProps> = ({ project }) => {
 	);
 };
 
-export const Socials: React.FC<DivProps> = ({ className }) => {
+export const Socials: React.FC<{ className: string }> = ({ className }) => {
 	return (
 		<div className={`flex justify-around ${className ?? ""}`}>
 			<a
@@ -93,11 +138,14 @@ function parseTextToBlocks(text: string): ContentBlock[] {
 	return blocks;
 }
 
-export const Writeup: React.FC<ProjectProps> = ({ project }) => {
+export const Writeup: React.FC<{ project: Project; className?: string }> = ({
+	project,
+	className,
+}) => {
 	if (!project.writeup) return null;
 
 	return (
-		<div className="columns-1 lg:columns-2 mt-8">
+		<div className={`${className ?? ""} mt-8`}>
 			{project.writeup.map((section) => {
 				if (!section.text) return;
 				const blocks = parseTextToBlocks(section.text);

@@ -17,9 +17,36 @@ const Projects: React.FC = () => {
 		? PROJECTS.filter((p) => p.category === selectedCategory)
 		: PROJECTS;
 
+	const monthOrder: Record<string, number> = {
+		January: 1,
+		February: 2,
+		March: 3,
+		April: 4,
+		May: 5,
+		June: 6,
+		July: 7,
+		August: 8,
+		September: 9,
+		October: 10,
+		November: 11,
+		December: 12,
+	};
+
+	const parseEnd = (end: string): number => {
+		if (end === "Present") return Infinity;
+		const [month, year] = end.split(" ");
+		return parseInt(year) * 100 + monthOrder[month];
+	};
+
 	const categories: (ProjectCategory | "All")[] = [
 		"All",
-		...Array.from(new Set(PROJECTS.map((p) => p.category))),
+		...Array.from(
+			new Set(
+				PROJECTS.sort((a: Project, b: Project) => parseEnd(b.end) - parseEnd(a.end)).map(
+					(p) => p.category,
+				),
+			),
+		),
 	];
 
 	return (

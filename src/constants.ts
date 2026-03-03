@@ -12,7 +12,6 @@ import {
 	PiSquareDuotone,
 	PiSquaresFourDuotone,
 } from "react-icons/pi";
-import { AndroidLogo } from "phosphor-react";
 
 export const HeadingIcons: Record<Heading, IconType> = {
 	Overview: PiBookOpenDuotone,
@@ -41,17 +40,35 @@ export const PROJECTS: Project[] = [
 		tagline: "Guide your sibling through the woods and survive the night.",
 		codeUrl: "https://github.com/bmanske505/Escape-The-Forest",
 		demoUrl: "https://itch.io/embed-upload/16537285?color=000000",
-		tags: ["Unity", "CI/CD", "Agile", "Prototyping"],
+		tags: ["Unity", "Firebase", "CI/CD", "Agile", "Prototyping", "AI", "Analytics"],
+		photos: [
+			{
+				src: "./title-1.0.png",
+				caption: "Title screen - Release 1.0",
+			},
+			{
+				src: "./gameplay-1.0.png",
+				caption: "Gameplay - Release 1.0",
+			},
+			{
+				src: "./time-graph-1.0.png",
+				caption: "Gameplay time graph created from user analytics - Release 1.0",
+			},
+			{
+				src: "./flashlight-graph-1.0.png",
+				caption: "Flashlight use graph created from user analytics - Release 1.0",
+			},
+		],
 	},
 	{
 		title: "WNS Visualization",
 		event: "UW CSE 457: Data Visualization Final",
 		end: "December 2025",
 		category: "Web App",
-		thumbnail: "./wns-webpage.png",
+		thumbnail: "https://invasive-species-6ebd34.pages.cs.washington.edu/images/wns.jpg",
 		tagline:
 			"Bats play a crucial role in our environment, but recently a species of fungus has been decimating their numbers.",
-		webUrl: "https://invasive-species-6ebd34.pages.cs.washington.edu/",
+		demoUrl: "https://invasive-species-6ebd34.pages.cs.washington.edu/",
 		codeUrl: "https://gitlab.cs.washington.edu/cse442/25au/fp/invasive-species",
 		writeup: [
 			{

@@ -7,6 +7,11 @@ interface Section {
 	text: string;
 }
 
+interface ProjectPhoto {
+	src: string;
+	caption: string;
+}
+
 export interface Project {
 	title: string;
 	event: string;
@@ -17,9 +22,9 @@ export interface Project {
 	thumbnail: string;
 	tagline?: string;
 	writeup?: Section[];
-	webUrl?: string;
 	codeUrl?: string;
 	demoUrl?: string;
 	tags: string[];
-	award?: string;
+  award?: string;
+  photos?: ProjectPhoto[];
 }

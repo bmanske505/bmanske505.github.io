@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { createPortal } from "react-dom";
 import { Project } from "../types";
-import { Heading, Tags, Writeup } from "./FormattedBlocks";
+import { Heading, PhotoCarousel, Tags, Writeup } from "./FormattedBlocks";
 import { DefaultIcon } from "../constants";
 import {
 	PiBriefcaseDuotone,
@@ -51,8 +51,8 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => {
 					<div className="flex-1 overflow-y-auto p-8 custom-scrollbar">
 						<div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
 							<div className="lg:col-span-3">
-								<div className="aspect-video overflow-hidden border">
-									{project.demoUrl ? (
+								<div className="order-1 lg:order-none hidden lg:block lg:col-span-3 aspect-video overflow-hidden border">
+									{project.demoUrl && (
 										<iframe
 											className="size-full"
 											src={project.demoUrl}
@@ -60,21 +60,11 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => {
 											loading="lazy"
 											title={project.title}
 										/>
-									) : (
-										project.webUrl && (
-											<a href={project.webUrl} target="_blank">
-												<img
-													className="size-full m-auto object-cover"
-													src={project.thumbnail}
-													title={project.title}
-												/>
-											</a>
-										)
 									)}
 								</div>
 							</div>
 
-							<div className="space-y-8 lg:col-span-2">
+							<div className="order-2 lg:order-none lg:col-span-2 lg:row-span-2 space-y-8">
 								<div className="space-y-2">
 									<h4 className="secondary">Details</h4>
 									<p className="text-icon">
@@ -98,13 +88,13 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => {
 										</p>
 									)}
 								</div>
-								{(project.codeUrl || project.webUrl) && (
+								{(project.codeUrl || (project.demoUrl && project.category == "Web App")) && (
 									<div className="space-y-4">
 										<h4 className="secondary">Connect & Launch</h4>
 										<div className="flex flex-wrap gap-4">
-											{project.webUrl && (
+											{project.demoUrl && project.category == "Web App" && (
 												<span className="box-depress">
-													<a href={project.webUrl} target="_blank" className="text-icon">
+													<a href={project.demoUrl} target="_blank" className="text-icon">
 														Visit Webpage
 														<PiArrowSquareOutDuotone size={22} title="Webpage" />
 													</a>
@@ -133,9 +123,10 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => {
 										<Tags project={project} />
 									</div>
 								)}
+								<PhotoCarousel className="col-span-12" project={project} />
 							</div>
+							<Writeup className="order-3 lg:order-none lg:col-span-3" project={project} />
 						</div>
-						<Writeup project={project} />
 					</div>
 				</div>
 			</div>
