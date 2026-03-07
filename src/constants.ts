@@ -4,13 +4,18 @@ import { Project, Heading, ProjectCategory } from "./types";
 import {
 	PiBookOpenDuotone,
 	PiGameControllerDuotone,
+	PiGameControllerFill,
 	PiGearDuotone,
 	PiGearFineDuotone,
+	PiGearFineFill,
 	PiGlobeDuotone,
+	PiGlobeFill,
 	PiPlantDuotone,
 	PiPuzzlePieceDuotone,
 	PiSquareDuotone,
+	PiSquareFill,
 	PiSquaresFourDuotone,
+	PiSquaresFourFill,
 } from "react-icons/pi";
 
 export const HeadingIcons: Record<Heading, IconType> = {
@@ -20,35 +25,68 @@ export const HeadingIcons: Record<Heading, IconType> = {
 	"What I Learned": PiPlantDuotone,
 };
 
-export const CategoryIcons: Record<ProjectCategory | "All", IconType> = {
-	All: PiSquaresFourDuotone,
-	"Video Game": PiGameControllerDuotone,
-	Software: PiGearFineDuotone,
-	"Web App": PiGlobeDuotone,
+export const CategoryIcons: Record<ProjectCategory | "All", [IconType, IconType]> = {
+	All: [PiSquaresFourDuotone, PiSquaresFourFill],
+	"Video Game": [PiGameControllerDuotone, PiGameControllerFill],
+	Software: [PiGearFineDuotone, PiGearFineFill],
+	"Web App": [PiGlobeDuotone, PiGlobeFill],
 };
 
-export const DefaultIcon: IconType = PiSquareDuotone;
+export const DefaultIcon: [IconType, IconType] = [PiSquareDuotone, PiSquareFill];
+export const DefaultIconClosed: IconType = DefaultIcon[0];
+export const DefaultIconOpen: IconType = DefaultIcon[1];
 
 export const PROJECTS: Project[] = [
 	{
 		title: "Escape the Forest",
 		event: "UW CSE 481: Games Capstone",
 		start: "January 2026",
-		end: "Present",
+		end: "March 2026",
 		category: "Video Game",
 		thumbnail: "https://img.itch.zone/aW1nLzI1OTA4NzY5LnBuZw==/315x250%23c/jiVIXx.png",
 		tagline: "Guide your sibling through the woods and survive the night.",
 		codeUrl: "https://github.com/bmanske505/Escape-The-Forest",
 		demoUrl: "https://itch.io/embed-upload/16537285?color=000000",
 		tags: ["Unity", "Firebase", "CI/CD", "Agile", "Prototyping", "AI", "Analytics"],
+		writeup: [
+			{
+				heading: "Overview",
+				text: `A quarter-long game development capstone built with a partner under an Agile workflow. Shipped iteratively across multiple sprints with consistent delivery and scope management.`,
+			},
+			{
+				heading: "My Role",
+				text: `
+        - Built core gameplay systems including procedural maze generation, enemy AI navigation, inventory management, and cross-session save states.
+        - Integrated Firebase for live analytics and designed A/B tests to validate design decisions with real player data.
+        `,
+			},
+			{
+				heading: "My Challenges",
+				text: `Balancing a high-intensity sprint schedule alongside a demanding course load. Used Trello to divide responsibilities and keep progress visible, which kept us on track without sacrificing quality.`,
+			},
+			{
+				heading: "What I Learned",
+				text: `
+        - Gained hands-on experience with data-driven iteration, collecting player behavior data, identifying friction points, and shipping targeted improvements in response.
+        - Strengthened my understanding of CI/CD and multi-developer workflows.`,
+			},
+		],
 		photos: [
 			{
 				src: "./title-1.0.png",
 				caption: "Title screen - Release 1.0",
 			},
 			{
+				src: ".//title-1.1.png",
+				caption: "Reworked title screen - Release 1.1",
+			},
+			{
 				src: "./gameplay-1.0.png",
 				caption: "Gameplay - Release 1.0",
+			},
+			{
+				src: "./gameplay-1.1.png",
+				caption: "Reworked gameplay - Release 1.1",
 			},
 			{
 				src: "./time-graph-1.0.png",
@@ -73,25 +111,25 @@ export const PROJECTS: Project[] = [
 		writeup: [
 			{
 				heading: "Overview",
-				text: `This project is an interactive data visualization highlighting the impact of white-nose syndrome, a fungal disease that has devastated bat populations across the United States. The goal was to raise awareness by making population decline trends explorable and understandable to a general audience.`,
+				text: `An interactive data visualization on the impact of white-nose syndrome on North American bat populations, built as a final project for CSE 457: Data Visualization.`,
 			},
 			{
 				heading: "My Role",
-				text: `I took on multiple responsibilities to support both the data and front-end aspects of the project, including:
-        - Sourcing bat population and fungal spread data from ScienceBase and related public datasets
-        - Cleaning, normalizing, and aggregating raw data using Python and Pandas
-        - Translating design mockups into a responsive visualization layout using HTML, CSS, and Bootstrap
-        - Implementing interactive visualizations and UI controls in D3.js`,
+				text: `
+        - Sourced and cleaned population datasets using Python’s pandas library.
+        - Established a shared data schema that unblocked parallel front-end development.
+        - Built the responsive layout in HTML/CSS/Bootstrap and implemented interactive D3.js visualizations.
+        `,
 			},
 			{
 				heading: "My Challenges",
-				text: `Reliable and consistent population data was difficult to obtain due to a government shutdown that limited access to monitored data requests. Additionally, population estimates varied significantly depending on measurement methodology. To address this, I began with a small, well-defined sample dataset and established a consistent schema with key fields used across all visualizations. This allowed the rest of the team to proceed with D3 development while I worked backwards to integrate real-world data.
-        
-        Additionally, as the dataset grew, we observed noticeable performance issues during slider interactions due to repeated full re-renders of large numbers of SVG elements. To improve responsiveness, I refactored the D3 update logic to operate on incremental batches of datapoints rather than re-rendering the entire dataset on each interaction. This significantly reduced unnecessary DOM updates and resulted in smoother, more responsive user interactions.`,
+				text: `A government shutdown limited dataset access mid-project. Resolved it by defining a clean schema with a sample dataset early, letting the team build ahead while I backfilled real data. Later optimized D3 update logic to process incremental data batches, significantly improving interaction performance under larger datasets.`,
 			},
 			{
 				heading: "What I Learned",
-				text: `This project strengthened my understanding of responsive layout systems like Bootstrap and highlighted both its strengths and limitations. I also gained practical experience optimizing D3 visualizations for performance, reinforcing the importance of efficient update patterns and thoughtful data handling in interactive visual systems.`,
+				text: `
+        - Reinforced the value of early schema design in team projects.
+        - Gained practical experience optimizing D3 for performance and developed a clearer sense of Bootstrap’s strengths and limitations in responsive layout work.`,
 			},
 		],
 		tags: ["D3.js", "Bootstrap", "HTML", "Pandas"],
@@ -109,16 +147,14 @@ export const PROJECTS: Project[] = [
 		writeup: [
 			{
 				heading: "Overview",
-				text: `This game was developed during the Game Dev Club jam at the University of Washington. Collaborating with a creative team of 3, I took on a valuable mentor role, supporting developers new to game dev in programming and asset creation.`,
+				text: `A narrative-driven Unity game built during the UW Game Dev Club jam with a team of three, placing 3rd overall.`,
 			},
 			{
 				heading: "My Role",
-				text: `
-        As the lead programmer of a junior team, I played a critical role in supporting the team and building the project's technical structure:
-        - Designed and implemented game progression systems, unlockable content, and dynamic menus to support a narrative-driven experience
-        - Structured modular, maintainable C# scripts to manage overlapping game logic, player abilities, and companion interactions
-        - Mentored new team members in programming, art, and level design, providing technical guidance and collaborative support
-
+				text: `Led programming as the most experienced developer on the team.
+        - Designed progression systems, unlockable content, and dynamic menus.
+        - Structured the codebase with modular C# scripts to keep overlapping systems maintainable.
+        - Mentored junior teammates in Unity, programming, and asset creation throughout the jam.
         `,
 			},
 			{
@@ -146,16 +182,14 @@ export const PROJECTS: Project[] = [
 		writeup: [
 			{
 				heading: "Overview",
-				text: `This game was developed over a 2-week-long game jam exclusive to solo developers.`,
+				text: `A solo game jam entry developed over two weeks for the Imaginary Game Jam, winning Community Favorite.`,
 			},
 			{
 				heading: "My Role",
-				text: `
-        As a solo developer, I was in charge of creating literally everything you see in the final product! Here are some of my technical highlights:
-        - Built core gameplay systems including player controllers, combat logic, enemy waves, and event-driven game progression
-        - Designed flexible, data-driven architectures using ScriptableObjects to allow rapid content iteration without code changes
-        - Iterated on playtester feedback to rebalance difficulty and improve player controls, prioritizing smooth gameplay
-        - Implemented coroutines and optimized runtime performance to maintain responsive and consistent frame rates
+				text: `Solely responsible for all programming, design, and content.
+        - Built player controls, combat systems, enemy wave logic, and event-driven progression.
+        - Used ScriptableObjects for a data-driven architecture that made balancing fast without code changes.
+        - Iterated on difficulty and controls based on playtester feedback across multiple rounds before submission.
         `,
 			},
 			{
@@ -183,24 +217,25 @@ export const PROJECTS: Project[] = [
 		writeup: [
 			{
 				heading: "Overview",
-				text: `This game was developed for CSE 457: Computer Graphics at the University of Washington. Collaborating with a team of 3 over the course of 4 weeks, I built a 3D scavenger-hunt game in Unity, ultimately earning first place in the class competition.`,
+				text: `A 3D scavenger-hunt game built over four weeks with a team of three for CSE 457: Computer Graphics. Placed 1st in the class competition.`,
 			},
 			{
 				heading: "My Role",
 				text: `
-        As the lead programmer, I was responsible for designing and implementing core gameplay systems, including:
-        - A procedural forest generator with terrain-aware object placement to create a dynamic environment
-        - Responsive UI systems to support cutscenes, guide player objectives, and reflect inventory state
-        - Player movement, interaction triggers, and camera behavior designed to support a smooth and engaging gameplay loop
+        - Implemented procedural forest generation with terrain-aware object placement.
+        - Designed responsive UI for cutscenes and inventory.
+        - Integrated third-party assets strategically to maintain iteration speed without sacrificing visual quality.
         `,
 			},
 			{
 				heading: "My Challenges",
-				text: `This was my first large-scale project working in 3D, which meant learning to work with meshes, animations, and environment assets effectively. A key challenge was balancing visual fidelity of 3D assets with iteration speed, especially while learning 3D workflows for the first time. To streamline production, I integrated assets from Mixamo and the Unity Asset Store, allowing us to prototype quickly while still building a cohesive visual experience.`,
+				text: `First experience working in 3D, requiring fast ramp-up on meshes, animations, and environment assets under a real deadline. Balanced learning new tools while maintaining steady team output.`,
 			},
 			{
 				heading: "What I Learned",
-				text: `This project strengthened my experience with collaborative development, particularly with using GitHub for version control, code reviews, and merging contributions across the team. I also gained experience in more structured, long-term project management, utilizing storyboarding and prototyping to iterate on an idea and turn it into a polished game.`,
+				text: `
+        - Deepened collaborative development skills: code reviews, branching strategy, and merging across a team in GitHub.
+        - Gained experience using storyboarding and prototyping as structured design tools to guide a project from concept to polished final product.`,
 			},
 		],
 		tags: ["Unity", "C#", "3D", "Teamwork"],

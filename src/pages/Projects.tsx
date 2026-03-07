@@ -5,6 +5,7 @@ import ProjectCard from "../components/ProjectCard";
 import ProjectModal from "../components/ProjectModal";
 
 import { useSearchParams } from "react-router-dom";
+import { IconType } from "react-icons";
 
 const Projects: React.FC = () => {
 	const [searchParams, setSearchParams] = useSearchParams();
@@ -62,7 +63,9 @@ const Projects: React.FC = () => {
 				{categories.length > 2 && (
 					<div className="flex flex-wrap justify-center items-center gap-8">
 						{categories.map((cat) => {
-							const Icon = CategoryIcons[cat] ?? DefaultIcon;
+							const Icons: [IconType, IconType] = CategoryIcons[cat] ?? DefaultIcon;
+							const IconClosed = Icons[0];
+							const IconOpen = Icons[1];
 
 							return (
 								<button
@@ -80,7 +83,8 @@ const Projects: React.FC = () => {
 									}}
 									className={`text-xs lg:text-sm box-depress radio ${(cat === "All" && selectedCategory === null) || selectedCategory === cat ? "active" : ""}`}>
 									<span className="text-icon">
-										<Icon size={22} title="Award Earned" />
+										<IconClosed className="icon-closed" size={22} title="Award Earned" />
+										<IconOpen className="icon-open" size={22} title="Award Earned" />
 										{cat.toUpperCase()}
 									</span>
 								</button>

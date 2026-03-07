@@ -150,7 +150,34 @@ li::marker {
 .box-lift,
 .box-depress,
 .box-depress > * {
-	@apply cursor-pointer transition-all duration-700 ease-out;
+	@apply cursor-pointer transition-all duration-500;
+}
+
+.text-interactable {
+	@apply inline-flex;
+}
+
+/* Hide open envelope by default, show on hover */
+.box-depress .icon-closed,
+.text-interactable .icon-closed,
+.box-lift .icon-closed {
+	@apply transition-transform duration-300 scale-100;
+}
+.box-depress .icon-open,
+.text-interactable .icon-open,
+.box-lift .icon-open {
+	@apply transition-transform duration-300 scale-0 absolute;
+}
+
+.box-depress:hover .icon-closed,
+.box-lift:hover .icon-closed,
+.text-interactable:hover .icon-closed {
+	@apply scale-0;
+}
+.box-depress:hover .icon-open,
+.box-lift:hover .icon-open,
+.text-interactable:hover .icon-open {
+	@apply scale-100;
 }
 
 /* toggle / active underline */

@@ -1,6 +1,13 @@
 import React from "react";
 import { Socials } from "../components/FormattedBlocks";
-import { PiEnvelopeFill, PiFileTextFill, PiUserDuotone } from "react-icons/pi";
+import {
+	PiEnvelopeDuotone,
+	PiEnvelopeOpenFill,
+	PiFileTextDuotone,
+	PiFileTextFill,
+	PiUserDuotone,
+	PiUserFill,
+} from "react-icons/pi";
 
 const About: React.FC = () => {
 	return (
@@ -38,7 +45,8 @@ const About: React.FC = () => {
 					<div className="flex flex-wrap gap-8 items-center justify-center md:justify-start">
 						<span className="box-depress">
 							<a href="mailto:bmanske505@gmail.com" target="_blank" className="text-icon">
-								<PiEnvelopeFill size={25} title="Email" />
+								<PiEnvelopeDuotone className="icon-closed" size={25} title="Email" />
+								<PiEnvelopeOpenFill className="icon-open" size={25} title="Email" />
 								Get in Touch
 							</a>
 						</span>
@@ -54,7 +62,8 @@ const About: React.FC = () => {
 				<div className="flex justify-center md:justify-start">
 					<div className="box-depress">
 						<a href="./BradyManske.pdf" target="_blank" className="text-icon">
-							<PiFileTextFill size={25} title="Resume" />
+							<PiFileTextDuotone className="icon-closed" size={25} title="Resume" />
+							<PiFileTextFill className="icon-open" size={25} title="Resume" />
 							View Resume
 						</a>
 					</div>
@@ -73,7 +82,8 @@ const About: React.FC = () => {
 						href="https://www.linkedin.com/in/cassidy-sanders-curry/"
 						target="_blank"
 						className="text-interactable">
-						<PiUserDuotone size={60} title="Cassidy's LinkedIn Profile" />
+						<PiUserDuotone className="icon-closed" size={60} title="Cassidy's LinkedIn Profile" />
+						<PiUserFill className="icon-open" size={60} title="Cassidy's LinkedIn Profile" />
 					</a>
 					<div>
 						<p className="font-bold">Cassidy Sanders-Curry</p>

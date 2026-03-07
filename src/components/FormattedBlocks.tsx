@@ -1,10 +1,13 @@
 import { Project } from "../types";
-import { CategoryIcons, DefaultIcon, HeadingIcons } from "../constants";
-import { useState, useEffect, useRef } from "react";
+import { CategoryIcons, DefaultIcon, DefaultIconClosed, HeadingIcons } from "../constants";
+import { useState, useEffect } from "react";
 import {
 	PiGameControllerDuotone,
+	PiGameControllerFill,
 	PiGithubLogoDuotone,
+	PiGithubLogoFill,
 	PiLinkedinLogoDuotone,
+	PiLinkedinLogoFill,
 } from "react-icons/pi";
 
 const SLIDE_DURATION = 5000;
@@ -74,11 +77,14 @@ export const Tags: React.FC<{ project: Project }> = ({ project }) => {
 };
 
 export const Heading: React.FC<{ project: Project }> = ({ project }) => {
-	const Icon = CategoryIcons[project.category] ?? DefaultIcon;
+	const Icons = CategoryIcons[project.category] ?? DefaultIcon;
+	const IconClosed = Icons[0];
+	const IconOpen = Icons[1];
 	return (
 		<div className="space-y-1">
 			<span className="spaced-out text-icon">
-				<Icon size={22} title={project.category} />
+				<IconClosed className="icon-closed" size={22} title={project.category} />
+				<IconOpen className="icon-open" size={22} title={project.category} />
 				{project.category}
 			</span>
 			<h3 className="text-2xl font-bold primary">{project.title}</h3>
@@ -93,13 +99,16 @@ export const Socials: React.FC<{ className: string }> = ({ className }) => {
 				href="https://www.linkedin.com/in/brady-manske/"
 				target="_blank"
 				className="text-interactable">
-				<PiLinkedinLogoDuotone size={30} title="LinkedIn Profile" />
+				<PiLinkedinLogoDuotone className="icon-closed" size={30} title="LinkedIn Profile" />
+				<PiLinkedinLogoFill className="icon-open" size={30} title="LinkedIn Profile" />
 			</a>
 			<a href="https://github.com/bmanske505" target="_blank" className="text-interactable">
-				<PiGithubLogoDuotone size={30} title="GitHub Profile" />
+				<PiGithubLogoDuotone className="icon-closed" size={30} title="GitHub Profile" />
+				<PiGithubLogoFill className="icon-open" size={30} title="GitHub Profile" />
 			</a>
 			<a href="https://state0fflux.itch.io" target="_blank" className="text-interactable">
-				<PiGameControllerDuotone size={30} title="Itch.io Profile" />
+				<PiGameControllerDuotone className="icon-closed" size={30} title="Itch.io Profile" />
+				<PiGameControllerFill className="icon-open" size={30} title="Itch.io Profile" />
 			</a>
 		</div>
 	);
@@ -149,7 +158,7 @@ export const Writeup: React.FC<{ project: Project; className?: string }> = ({
 			{project.writeup.map((section) => {
 				if (!section.text) return;
 				const blocks = parseTextToBlocks(section.text);
-				const Icon = HeadingIcons[section.heading] ?? DefaultIcon;
+				const Icon = HeadingIcons[section.heading] ?? DefaultIconClosed;
 
 				return (
 					<div className="break-inside-avoid p-5 flex flex-col gap-4">

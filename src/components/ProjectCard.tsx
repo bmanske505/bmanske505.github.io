@@ -1,7 +1,7 @@
 import React from "react";
 import { Project } from "../types";
 import { Heading, Tags } from "./FormattedBlocks";
-import { PiTrophyDuotone } from "react-icons/pi";
+import { PiTrophyDuotone, PiTrophyFill } from "react-icons/pi";
 
 interface ProjectCardProps {
 	project: Project;
@@ -26,7 +26,9 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onClick }) => {
 
 				{project.award && (
 					<span className="text-icon">
-						<PiTrophyDuotone size={22} title="Award Earned" />
+						<PiTrophyDuotone className="icon-closed" size={22} title="Award Earned" />
+						<PiTrophyFill className="icon-open" size={22} title="Award Earned" />
+
 						{project.award}
 					</span>
 				)}

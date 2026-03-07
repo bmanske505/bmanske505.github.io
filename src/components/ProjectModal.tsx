@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { createPortal } from "react-dom";
 import { Project } from "../types";
 import { Heading, PhotoCarousel, Tags, Writeup } from "./FormattedBlocks";
-import { DefaultIcon } from "../constants";
+import { DefaultIconClosed, DefaultIconOpen } from "../constants";
 import {
 	PiBriefcaseDuotone,
 	PiCalendarDotsDuotone,
@@ -11,6 +11,9 @@ import {
 	PiTrophyDuotone,
 	PiPaintBrushDuotone,
 	PiArrowSquareOutDuotone,
+	PiGithubLogoFill,
+	PiGitlabLogoFill,
+	PiArrowSquareOutFill,
 } from "react-icons/pi";
 
 interface ProjectModalProps {
@@ -95,23 +98,57 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => {
 											{project.demoUrl && project.category == "Web App" && (
 												<span className="box-depress">
 													<a href={project.demoUrl} target="_blank" className="text-icon">
+														<PiArrowSquareOutDuotone
+															className="icon-closed"
+															size={22}
+															title="Webpage"
+														/>
+														<PiArrowSquareOutFill className="icon-open" size={22} title="Webpage" />
 														Visit Webpage
-														<PiArrowSquareOutDuotone size={22} title="Webpage" />
 													</a>
 												</span>
 											)}
 											{project.codeUrl && (
 												<span className="box-depress">
-													<a href={project.codeUrl} target="_blank" className="text-icon">
-														View Codebase
-														{project.codeUrl.includes("github") ? (
-															<PiGithubLogoDuotone size={22} title="GitHub Repository" />
-														) : project.codeUrl.includes("gitlab") ? (
-															<PiGitlabLogoDuotone size={22} title="GitLab Repository" />
-														) : (
-															<DefaultIcon size={22} title="Codebase" />
-														)}
-													</a>
+													{project.codeUrl.includes("github") ? (
+														<a href={project.codeUrl} target="_blank" className="text-icon">
+															<PiGithubLogoDuotone
+																className="icon-closed"
+																size={22}
+																title="GitHub Repository"
+															/>
+															<PiGithubLogoFill
+																className="icon-open"
+																size={22}
+																title="GitHub Repository"
+															/>
+															View Codebase
+														</a>
+													) : project.codeUrl.includes("gitlab") ? (
+														<a href={project.codeUrl} target="_blank" className="text-icon">
+															<PiGitlabLogoDuotone
+																className="icon-closed"
+																size={22}
+																title="GitLab Repository"
+															/>
+															<PiGitlabLogoFill
+																className="icon-open"
+																size={22}
+																title="GitLab Repository"
+															/>
+															View Codebase
+														</a>
+													) : (
+														<a href={project.codeUrl} target="_blank" className="text-icon">
+															<DefaultIconClosed
+																className="icon-closed"
+																size={22}
+																title="Codebase"
+															/>
+															<DefaultIconOpen className="icon-open" size={22} title="Codebase" />
+															View Codebase
+														</a>
+													)}
 												</span>
 											)}
 										</div>
