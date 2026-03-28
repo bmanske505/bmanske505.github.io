@@ -28,3 +28,12 @@ export interface Project {
   award?: string;
   photos?: ProjectPhoto[];
 }
+
+export interface Endorsement {
+  description: string;
+  name: string;
+  role: string;
+  company: string;
+  relation: string;
+  email: string;
+}

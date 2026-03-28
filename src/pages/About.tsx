@@ -5,9 +5,9 @@ import {
 	PiEnvelopeOpenFill,
 	PiFileTextDuotone,
 	PiFileTextFill,
-	PiUserDuotone,
-	PiUserFill,
 } from "react-icons/pi";
+import { ENDORSEMENTS } from "../constants";
+import EndorsementEntry from "../components/EndorsementEntry";
 
 const About: React.FC = () => {
 	return (
@@ -69,29 +69,18 @@ const About: React.FC = () => {
 					</div>
 				</div>
 			</section>
-			<section className="flex flex-col gap-4">
-				<h2>Endorsements</h2>
-				<p>
-					“Brady is quick to find solutions and improve the accessibility of the UW Recreation
-					website. He takes direction extremely well and consistently goes a step further on his own
-					to make meaningful improvements. Additionally, he is one of the most responsive student
-					employees I have had the privilege of working with.”
-				</p>
-				<div className="ml-16 text-icon !gap-8">
-					<a
-						href="https://www.linkedin.com/in/cassidy-sanders-curry/"
-						target="_blank"
-						className="text-interactable">
-						<PiUserDuotone className="icon-closed" size={60} title="Cassidy's LinkedIn Profile" />
-						<PiUserFill className="icon-open" size={60} title="Cassidy's LinkedIn Profile" />
-					</a>
-					<div>
-						<p className="font-bold">Cassidy Sanders-Curry</p>
-						<p className="text-sm">
-							Assistant Director of Outreach, UW Recreation <br />
-							(Supervisor)
-						</p>
-					</div>
+			<section>
+				<div className="flex flex-col gap-8">
+					<h2>Endorsements</h2>
+					{ENDORSEMENTS.map((entry) => {
+						return (
+							<div className="flex flex-col gap-8">
+								<hr />
+								<EndorsementEntry endorsement={entry} />
+							</div>
+						);
+					})}
+					<hr />
 				</div>
 			</section>
 		</div>

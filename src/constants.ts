@@ -1,5 +1,5 @@
 import { IconType } from "react-icons";
-import { Project, Heading, ProjectCategory } from "./types";
+import { Project, Heading, ProjectCategory, Endorsement } from "./types";
 
 import {
 	PiBookOpenDuotone,
@@ -35,6 +35,25 @@ export const CategoryIcons: Record<ProjectCategory | "All", [IconType, IconType]
 export const DefaultIcon: [IconType, IconType] = [PiSquareDuotone, PiSquareFill];
 export const DefaultIconClosed: IconType = DefaultIcon[0];
 export const DefaultIconOpen: IconType = DefaultIcon[1];
+
+export const ENDORSEMENTS: Endorsement[] = [
+	{
+		description: `Brady is quick to find solutions and improve the accessibility of the UW Recreation website. He takes direction extremely well and consistently goes a step further on his own to make meaningful improvements. Additionally, he is one of the most responsive student employees I have had the privilege of working with.`,
+		name: "Cassidy Sanders-Curry",
+		role: "Assistant Director of Outreach",
+		company: "UW Recreation",
+		relation: "Supervisor",
+		email: "mailto:csc14@uw.edu",
+	},
+	{
+		description: `Brady did a great job of staying on top of his project, as well as the team artifacts. He was also proactive in keeping up with EdStem discussion posts. Brady is a particularly great TA, even by the Allen School's high standards.`,
+		name: "Brian Curless",
+		role: "Professor",
+		company: "Paul G. Allen School of Computer Science & Engineering",
+		relation: "Supervisor",
+		email: "mailto:curless@cs.washington.edu",
+	},
+];
 
 export const PROJECTS: Project[] = [
 	{
