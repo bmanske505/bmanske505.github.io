@@ -8,11 +8,11 @@ const EndorsementEntry: React.FC<{ endorsement: Endorsement }> = ({ endorsement 
 			<p>“{endorsement.description}”</p>
 			<div className="ml-16 text-icon !gap-8">
 				<a href={endorsement.email} target="_blank" className="text-interactable">
-					<PiUserDuotone className="icon-closed" size={60} title={endorsement.name} />
-					<PiEnvelopeOpenFill className="icon-open" size={60} title={endorsement.name} />
+					<PiUserDuotone className="icon-closed secondary" size={60} title={endorsement.name} />
+					<PiEnvelopeOpenFill className="icon-open accent" size={60} title={endorsement.name} />
 				</a>
 				<div>
-					<p className="font-bold">{endorsement.name}</p>
+					<p className="font-bold secondary">{endorsement.name}</p>
 					<p className="text-sm">
 						{endorsement.role}, {endorsement.company} <br />({endorsement.relation})
 					</p>

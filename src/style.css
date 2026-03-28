@@ -76,6 +76,12 @@ h4 {
 	@apply accent spaced-out;
 }
 
+hr {
+	@apply rounded-xl bg-secondary;
+	border: none; /* Removes the default border */
+	height: 3px; /* Sets the thickness of the line */
+}
+
 ul {
 	list-style: disc outside;
 }
