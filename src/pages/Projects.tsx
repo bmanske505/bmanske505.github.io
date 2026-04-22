@@ -12,7 +12,7 @@ const Projects: React.FC = () => {
 	const selectedTitle = searchParams.get("title");
 	const selectedCategory = searchParams.get("category") as ProjectCategory;
 
-	const selectedProject: Project = PROJECTS.find((p) => p.title === selectedTitle);
+	const selectedProject: Project | undefined = PROJECTS.find((p) => p.title === selectedTitle);
 
 	const filteredProjects = selectedCategory
 		? PROJECTS.filter((p) => p.category === selectedCategory)
