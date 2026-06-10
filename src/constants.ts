@@ -43,7 +43,7 @@ export const ENDORSEMENTS: Endorsement[] = [
 		role: "Professor",
 		company: "Paul G. Allen School of Computer Science & Engineering",
 		relation: "Supervisor",
-		email: "mailto:curless@cs.washington.edu",
+		link: "https://www.linkedin.com/in/brian-curless-73ab293/",
 	},
 	{
 		description: `Brady is quick to find solutions and improve the accessibility of the UW Recreation website. He takes direction extremely well and consistently goes a step further on his own to make meaningful improvements. Additionally, he is one of the most responsive student employees I have had the privilege of working with.`,
@@ -51,7 +51,7 @@ export const ENDORSEMENTS: Endorsement[] = [
 		role: "Assistant Director of Outreach",
 		company: "UW Recreation",
 		relation: "Supervisor",
-		email: "mailto:csc14@uw.edu",
+		link: "https://www.linkedin.com/in/cassidy-sanders-curry/",
 	},
 ];
 

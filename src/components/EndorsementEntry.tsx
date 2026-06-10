@@ -7,7 +7,7 @@ const EndorsementEntry: React.FC<{ endorsement: Endorsement }> = ({ endorsement 
 		<div className="flex flex-col gap-8">
 			<p>“{endorsement.description}”</p>
 			<div className="ml-16 text-icon !gap-8">
-				<a href={endorsement.email} target="_blank" className="text-interactable">
+				<a href={endorsement.link} target="_blank" className="text-interactable">
 					<PiUserDuotone className="icon-closed secondary" size={60} title={endorsement.name} />
 					<PiEnvelopeOpenFill className="icon-open accent" size={60} title={endorsement.name} />
 				</a>

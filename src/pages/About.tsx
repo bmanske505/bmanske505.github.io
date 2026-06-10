@@ -22,7 +22,7 @@ const About: React.FC = () => {
 					/>
 					<div className="absolute -bottom-6 -right-6 p-6 border milky">
 						<h4 className="accent-secondary">Based In</h4>
-						<p className="text-lg primary font-bold">Seattle, WA</p>
+						<p className="text-lg primary font-bold">Bellingham, WA</p>
 					</div>
 				</div>
 

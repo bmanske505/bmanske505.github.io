@@ -35,5 +35,5 @@ export interface Endorsement {
   role: string;
   company: string;
   relation: string;
-  email: string;
+  link: string;
 }
