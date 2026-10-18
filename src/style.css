@@ -3,20 +3,21 @@
 @tailwind utilities;
 
 /* Primitives */
+
 :root {
-	--accent: rgb(114, 82, 255);
-	--text: rgb(71 85 105);
-	--primary: 225 225 225;
-	--secondary: 30 30 30;
+	--accent: rgb(99 149 95);
+	--text: rgb(255, 255, 255);
+	--primary: 36 63 85;
+	--secondary: 214 255 211;
 }
 
-@media (prefers-color-scheme: dark) {
+/*@media (prefers-color-scheme: dark) {
 	:root {
 		--primary: 30 30 30;
 		--secondary: 225 225 225;
 		--text: rgb(148 163 184);
 	}
-}
+}*/
 
 .accent {
 	color: var(--accent);
