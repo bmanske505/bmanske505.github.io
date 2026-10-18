@@ -61,7 +61,7 @@ const About: React.FC = () => {
 				<p>A summary of my professional journey and skills.</p>
 				<div className="flex justify-center md:justify-start">
 					<div className="box-depress">
-						<a href="./BradyManske.pdf" target="_blank" className="text-icon">
+						<a href="https://docs.google.com/document/d/16TDnDGKPr2k_VT0n7aMJaupo-7GvjLGfTg-1mgJobfM/preview" target="_blank" className="text-icon">
 							<PiFileTextDuotone className="icon-closed" size={25} title="Resume" />
 							<PiFileTextFill className="icon-open" size={25} title="Resume" />
 							View Resume
